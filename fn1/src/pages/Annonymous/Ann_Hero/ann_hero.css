@@ -1,0 +1,94 @@
+.banner_1{
+    position: absolute;
+    left: 6.78%;
+    right: 5.83%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 400%;
+    text-align: center; 
+    color: #FFFFFF;
+}
+
+.main_home{
+    position: relative;
+    height: 872px;
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 0%;
+}
+
+.main_home_undertext{
+     
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 70.6px;
+    /* line-height: 99px; */
+    position: absolute;
+    left:0%;
+    right: 47.32%;
+    top: 12.39%;
+    bottom: 41.45%;
+
+    
+    
+    color: #ffffff;
+}
+
+.main_home_text{
+   
+font-family: 'Inter';
+font-style: normal;
+font-weight: 350;
+font-size: 75.4054px;
+/* line-height: 107px; */
+/* identical to box height */
+
+
+color: #FFFFFF;
+}
+
+.main_home_p{
+    line-height: 807px;
+    margin-left: 3%;
+    position: relative;
+    top: -5%;
+}
+
+.main_home_button_login{
+    
+    position: relative;
+    top:-32%;
+    left: 5%;
+    padding: 0.5% 3%;
+}
+
+.main_home_button_register{
+    
+    position: relative;
+    top:-32%;
+    left:3%;
+    padding: 0.5% 3%;
+
+}
+
+.main_home_white_whatis{
+    font-family: 'Brittany Signature';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 90.94px;
+    color: #333333;
+    
+}
+
+.main_home_white_eventease{
+
+
+font-family: 'Inter';
+font-style: bold;
+font-weight: 700;
+font-size: 90.94px;
+color: #333333;
+}
