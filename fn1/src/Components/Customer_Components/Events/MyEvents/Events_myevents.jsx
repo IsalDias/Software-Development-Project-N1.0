@@ -1,57 +1,60 @@
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import './events_myevents.css'
+import React, { useState, useEffect } from 'react';
+import { Table, Button } from 'react-bootstrap';
+import axios from 'axios';
+import  './events_myevents.css'
 
+const EventsTable = () => {
 
-function createData(Event_Name, calories, fat, carbs, protein) {
-  return { Event_Name, calories, fat, carbs, protein };
-}
+  const [events, setEvents] = useState([]);
 
-const rows = [
-    // createData('Ishan Birthday', Event, new Date(2023, 4, 11)),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
-export default function Event_BasicTable() {
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/events');
+      setEvents(response.data);
+    } catch (error) {
+      console.log('Error fetching events:', error);
+    }
+  };
+
+  const handleView = (eventId) => {
+    // Handle view button click event
+    console.log('View event:', eventId);
+    // Add your logic here to navigate to the event details page or perform any other action
+  };
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div  >
+      <h1 className="EventsTable_heading">Events Table</h1>
+      <div className="EventsTable_table_full" style={{ overflowX: 'auto' }}>
+        <Table striped bordered hover >
+          <thead>
+            <tr style={{color:"white"}}>
+              <th>Event Name</th>
+              <th>Event Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {events.map((event) => (
+              <tr key={event.id} >
+                <td style={{color:"white"}}>{event.eventName}</td>
+                <td style={{color:"white"}}>{event.eventDate}</td>
+                <td>
+                  <Button variant="primary" onClick={() => handleView(event.id)} style={{backgroundColor:'#00ad65', borderColor:"#00ad65"}}>
+                    View
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </div>
   );
-}
+};
 
+export default EventsTable;

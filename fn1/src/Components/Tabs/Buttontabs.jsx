@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Nav from 'react-bootstrap/Nav';
 import './buttontabs.css';
-import Event_BasicTable from '../../Components/Customer_Components/Events/MyEvents/Events_myevents'
+import Event_BasicTable from '../../Components/Customer_Components/Events/MyEvents/Events_myevents';
 
 function Buttontabs() {
   const [activeTab, setActiveTab] = useState('link-1'); // Initialize the active tab state
@@ -12,14 +11,21 @@ function Buttontabs() {
 
   return (
     <div className='first_section_buttontabs'>
-      <Nav fill variant="tabs" defaultActiveKey="/link-1" activeKey={activeTab} onSelect={handleTabSelect}>
-        <Nav.Item>
-          <Nav.Link eventKey="link-1">My Events</Nav.Link>
-        </Nav.Item> 
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Past Events</Nav.Link>
-        </Nav.Item>     
-      </Nav>
+      <div className="button-container">
+        <button style={{backgroundColor:"transparent"}}
+          className={`tab-button ${activeTab === 'link-1' ? 'active' : ''}`}
+          onClick={() => handleTabSelect('link-1')}
+        >
+          My Events
+        </button>
+        <button style={{backgroundColor:"transparent"}}
+          className={`tab-button ${activeTab === 'link-2' ? 'active' : ''}`}
+          onClick={() => handleTabSelect('link-2')}
+        >
+          Past Events
+        </button>
+        <div className={`underline ${activeTab === 'link-1' ? 'left' : 'right'}`} />
+      </div>
 
       {/* Render the relevant component based on the active tab */}
       {activeTab === 'link-1' ? <MyEventsComponent /> : null}
@@ -30,9 +36,11 @@ function Buttontabs() {
 
 // Define the components for My Events and Past Events
 function MyEventsComponent() {
-  return <div style={{position:"relative" ,top:"4vh"}}>
-    <Event_BasicTable/>
-    </div>;
+  return (
+    <div style={{ position: "relative", top: "4vh" }}>
+      <Event_BasicTable />
+    </div>
+  );
 }
 
 function PastEventsComponent() {

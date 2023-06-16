@@ -1,0 +1,22 @@
+.Events_CreateEvents_heading1{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40.167px;
+color: #FFFFFF;
+margin: 5% 0%;
+}
+
+.Events_CreateEvents_label{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 26.1075px;
+color: #FFFFFF;
+}
+
+.CreateEvents_form_full{
+    margin: 5% 30% 5% 5%;
+}
