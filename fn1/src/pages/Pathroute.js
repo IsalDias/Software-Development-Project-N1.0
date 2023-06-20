@@ -10,9 +10,11 @@ import Ann_Register from '../pages/Annonymous/Ann_Register/Ann_Register'
 import Cust_reg from '../pages/Customer/Customer_registration/Cust_reg'
 import { Service_prov_reg } from './Service_provider/Service_prov_Reg/Service_prov_reg'
 import { Serv_provid_Home } from './Service_provider/Serv_provid_Home/Serv_provid_Home'
-import Customer_  from './Customer/Events_createEvents/CreateEventsForm'
+import Customer_createEvents  from '../pages/Customer/Customer_createEvents/Customer_createEvents'
 import Add_services from '../pages/Admin/Manage_services/Add_services'
 import CreateEventTemplate from '../pages/Admin/Manage_Event_templates/Create_Event_template/Create_event_template'
+
+import CreateEventsForm  from './Customer/Events_createEvents/CreateEventsForm'
 
 
 export default function Pathroute() {
@@ -31,7 +33,9 @@ export default function Pathroute() {
             <Route path='/register/customer_register' element={<Cust_reg/>}></Route>
             <Route path='/register/service_provider_register' element={<Service_prov_reg />}></Route>
             <Route path='/serviceprovider' element={<Serv_provid_Home/>}></Route>
-            <Route path='/events/create_events' element={<CreateEventsForm/>}></Route>
+
+            <Route path='/events/create_events' element={<Customer_createEvents/>}></Route>
+
             <Route path='/eventtemplate/createeventtemplate' element={<CreateEventTemplate/>}></Route>
             <Route path='/services/add_services' element={<Add_services/>}></Route>
            
