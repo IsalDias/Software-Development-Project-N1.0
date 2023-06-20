@@ -1,6 +1,6 @@
 module.exports =(sequelize, DataTypes) =>{
 
-    const Event = sequelize.define("Event", {
+    const Service = sequelize.define("Service", {
 
         serviceId: {
             type:DataTypes.INTEGER,
@@ -22,6 +22,17 @@ module.exports =(sequelize, DataTypes) =>{
 
         
 });
+
+
+
+Service.associate = (models) => {
+
+    
+    const { EventTemplate, ServiceEventTemplate } = models;
+    Service.belongsToMany(EventTemplate, { through: ServiceEventTemplate,as: "EventTemplate", foreignKey:'serviceId'});
+
+};
+
 
 return Service;
 };

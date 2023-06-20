@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './createEventsForm.css';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import Create_Events_dropdown from '../../../Components/Customer_Components/Events/Create_Events_dropdown/Create_Events_dropdown'
 
 const CreateEventsForm = () => {
   const [eventName, setEventName] = useState('');
@@ -92,13 +93,21 @@ const CreateEventsForm = () => {
               </Form.Group>
             </Col>
           </Row>
+          <br></br>
 
           <Row>
             <Col>
-            
+            <Create_Events_dropdown/>
             </Col>
+
+
+            <br></br>
+
+           
           </Row>
-          <Button variant="primary" type="submit" style={{backgroundColor:'silver'}}>
+
+          <br></br>
+          <Button variant="primary" type="submit" style={{backgroundColor:'silver', margin:"0% 0% 0% 65%"}}>
             Create Event
           </Button>
         </Form>

@@ -11,7 +11,8 @@ import Cust_reg from '../pages/Customer/Customer_registration/Cust_reg'
 import { Service_prov_reg } from './Service_provider/Service_prov_Reg/Service_prov_reg'
 import { Serv_provid_Home } from './Service_provider/Serv_provid_Home/Serv_provid_Home'
 import CreateEventsForm  from './Customer/Events_createEvents/CreateEventsForm'
-
+import Add_services from '../pages/Admin/Manage_services/Add_services'
+import CreateEventTemplate from '../pages/Admin/Manage_Event_templates/Create_Event_template/Create_event_template'
 
 
 export default function Pathroute() {
@@ -31,6 +32,8 @@ export default function Pathroute() {
             <Route path='/register/service_provider_register' element={<Service_prov_reg />}></Route>
             <Route path='/serviceprovider' element={<Serv_provid_Home/>}></Route>
             <Route path='/events/create_events' element={<CreateEventsForm/>}></Route>
+            <Route path='/eventtemplate/createeventtemplate' element={<CreateEventTemplate/>}></Route>
+            <Route path='/services/add_services' element={<Add_services/>}></Route>
            
         </Routes>
       </Router>
