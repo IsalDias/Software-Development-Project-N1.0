@@ -14,8 +14,8 @@ app.use("/customers", CustomerRouter);
 const EventRouter = require('./Routes/Events');
 app.use("/events", EventRouter);
 
-const ServiceRouter = require('./Routes/Services');
-app.use("/services", ServiceRouter)
+const ServiceRouter = require('./Routes/Admin_Add_Services');
+app.use("/addservices", ServiceRouter)
 
 const EvntTmpltRouter = require('./Routes/EventTemplates');
 app.use("/evnttmplt", EvntTmpltRouter)
@@ -25,6 +25,10 @@ app.use("/evntTmplt", SlctEvntTmpltRouter)
 
 const SlctServicesNames = require('./Routes/Get_Services_names');
 app.use("/gtservicenames", SlctServicesNames)
+
+const ServicesNames = require('./Routes/Admin_createEvents_EventstemplateService');
+app.use("/pstevnttmpltservices", ServicesNames)
+
 
 
 

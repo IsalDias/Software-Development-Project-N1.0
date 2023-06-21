@@ -39,4 +39,8 @@ color: #FFFFFF;
     background-color: #700000;
     border: transparent; /* Make the border transparent on hover */
   }
+
   
+  .custom-dropdown-menu{
+    color: #c00000;
+  }

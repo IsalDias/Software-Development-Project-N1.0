@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {Service} = require('../models/');
+const {Service} = require('../models');
 
 
 
