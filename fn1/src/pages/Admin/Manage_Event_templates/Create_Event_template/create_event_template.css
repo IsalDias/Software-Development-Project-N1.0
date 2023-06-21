@@ -1,0 +1,42 @@
+.create_event_template_heading{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+color: #FFFFFF;
+
+}
+
+
+.custom-input {
+    /* Add your custom styles here */
+    background-color: #303030;
+    color: #ffffff;
+    border-color: #5e5e5e;
+    /* ... other styles */
+  }
+  
+
+  .custom-alert {
+    background-color: #000000;
+  }
+  
+  .custom-alert .swal-title {
+    color: #ffffff;
+  }
+  
+  .custom-alert .swal-button {
+    background-color: #5e0000;
+    border: transparent; /* Make the border transparent */
+  }
+  
+  .custom-alert .swal-icon {
+    background-color: transparent;
+  }
+  
+  .custom-alert .swal-button:hover {
+    background-color: #700000;
+    border: transparent; /* Make the border transparent on hover */
+  }
+  
