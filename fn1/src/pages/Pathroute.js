@@ -16,6 +16,8 @@ import Admin_CreateEventTemplate from './Admin/Manage_Event_templates/Create_Eve
 //sadkjaskdjkjaskjdkjsk
 import CreateEventsForm  from './Customer/Events_createEvents/CreateEventsForm'
 
+import Admin_View_Services from '../pages/Admin/View tables/Admin_View_Services'
+
 
 export default function Pathroute() {
   return (
@@ -38,7 +40,9 @@ export default function Pathroute() {
 
             <Route path='/eventtemplate/createeventtemplate' element={<Admin_CreateEventTemplate/>}></Route>
             <Route path='/services/add_services' element={<Add_services/>}></Route>
-           
+
+            <Route path='/services/view_services' element={<Admin_View_Services/>}></Route> 
+            {/* view table of services (admin) */}
         </Routes>
       </Router>
     </div>

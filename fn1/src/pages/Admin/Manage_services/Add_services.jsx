@@ -21,14 +21,14 @@ const Add_services = () => {
   }, []);
 
   const handleSubmit = async (values, { resetForm }) => {
-    if (!values.serviceDescription) {
-      alert('Service Description is required.');
+    if (!values.serviceName) {
+      swal('Alert', 'service Name is required.', 'warning');     
       return;
     }
 
     const { serviceName } = values;
     if (existingServiceNames.includes(serviceName)) {
-      swal('Error', 'Service Name already exists. Please enter a different Service Name.', 'error');
+      swal ('Error', 'Service Name already exists. Please enter a different Service Name.', 'error');
       return;
     }
 
@@ -79,7 +79,7 @@ const Add_services = () => {
           <br />
           <Button
             type="submit"
-            style={{ backgroundColor: "#303030", borderColor: "#313131"}}
+            style={{ backgroundColor: "red", borderColor: "#313131"}}
           >
             Submit
           </Button>
