@@ -1,0 +1,39 @@
+.portfolio_Cover{
+  padding: 0% 10%;
+  width: 1914px;
+  height: 730px;
+}
+
+.Portfolio_CoverPhoto{
+
+}
+
+.Profilephoto{
+  border-radius: 50%;
+  size: 5%;
+}
+
+
+.service-provider-profile {
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+  display: flex;
+}
+
+.portfolio-cover {
+  position: relative;
+}
+
+.portfolio-cover-photo {
+  width: 100%;
+  height: auto;
+}
+
+.change-cover-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 1px;
+  width: 190px;
+}

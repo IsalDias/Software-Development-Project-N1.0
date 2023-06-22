@@ -14,9 +14,12 @@ import Customer_createEvents  from '../pages/Customer/Customer_createEvents/Cust
 import Add_services from '../pages/Admin/Manage_services/Add_services'
 import Admin_CreateEventTemplate from './Admin/Manage_Event_templates/Create_Event_template/Admin_Create_event_template'
 //sadkjaskdjkjaskjdkjsk
-import CreateEventsForm  from './Customer/Events_createEvents/CreateEventsForm'
+import CreateEventsForm  from './Customer/Events_createEvents/CreateEventsForm' 
 
 import Admin_View_Services from '../pages/Admin/View tables/Admin_View_Services'
+//admin view services
+import Service_Provider_portfolio from '../pages/Service_provider/Portfolio/Service_provider_portfolio'
+
 
 
 export default function Pathroute() {
@@ -43,6 +46,8 @@ export default function Pathroute() {
 
             <Route path='/services/view_services' element={<Admin_View_Services/>}></Route> 
             {/* view table of services (admin) */}
+            <Route path='/portfolio' element={<Service_Provider_portfolio/>}></Route> 
+            {/* view portfolio */}
         </Routes>
       </Router>
     </div>
