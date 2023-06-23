@@ -7,9 +7,6 @@ import axios from "axios";
 const Create_event_template = () => {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
-  const [value3, setValue3] = useState("");
-  const [serviceNames, setServiceNames] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
   const [selectedService, setSelectedService] = useState(""); // Changed variable name
   const [selectedServices, setSelectedServices] = useState([]);
   const [alreadySelected, setAlreadySelected] = useState([]);
@@ -19,23 +16,12 @@ const Create_event_template = () => {
     // Fetch service names from the backend API
     axios.get("http://localhost:3001/gtservicenames")
       .then((response) => {
-        setServiceNames(response.data);
         setFilteredServiceNames(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
-  const handleSearchChange = (event) => {
-    const searchQuery = event.target.value;
-    setSearchValue(searchQuery);
-
-    const filteredServices = serviceNames.filter((name) =>
-      name.serviceName.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredServiceNames(filteredServices);
-  };
 
   const handleServiceSelect = (service) => { // Changed function name
     setSelectedService(service);
@@ -64,8 +50,6 @@ const Create_event_template = () => {
 
     setSelectedServices([...selectedServices, selectedService]);
     setAlreadySelected([...alreadySelected, selectedService]);
-
-    setSearchValue("");
     setSelectedService("");
   };
 
@@ -81,44 +65,11 @@ const Create_event_template = () => {
     setAlreadySelected(updatedAlreadySelected);
   };
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    const eData = {
-      eventTemplateName: value1,
-      eventTemplateDescrpt: value2,
-    };
-
-    axios
-      .post("http://localhost:3001/evnttmplt/snd_data", eData)
-      .then((response) => {
-        return axios.get("http://localhost:3001/evnttmplt/lastId");
-      })
-      .then((response) => {
-        const lastId = response.data.eventTemplateid;
-
-        console.log(selectedServices);
-        const templateData = {
-          eventTemplateid: lastId,
-          serviceId: parseInt(value3),
-        };
-
-        axios.post("http://localhost:3001/pstevnttmpltservices", templateData);
-      })
-      .then(() => {
-        // resetForm();
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Error: " + error);
-      });
-  };
-
   return (
     <div style={{ margin: "8% 8% 0% 3%", padding: "0% 8%" }}>
       <h1 className="create_event_template_heading">Add Event Template</h1>
 
-      <Form onSubmit={onSubmit}>
+      <Form>
         <Row>
           <Col>
             <Form.Group controlId="EventTemplate">

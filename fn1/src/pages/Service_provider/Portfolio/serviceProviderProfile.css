@@ -1,9 +1,9 @@
-.portfolio_Cover{
+ .portfolio_Cover{
   padding: 0% 10%;
   width: 1914px;
   height: 730px;
-}
-
+} 
+/* 
 .Portfolio_CoverPhoto{
 
 }
@@ -13,27 +13,75 @@
   size: 5%;
 }
 
+*/
 
-.service-provider-profile {
-  width: 100%;
-  height: auto;
-  margin-top: 5%;
+
+
+
+.portfolio_heading{
+  color: #FFF;
+  font-size: 250%;
+  font-family: Inter;
+  font-weight: 700;
+  position: relative;
+  right: 8%;
+  top: 10%;
+  padding: 7% 0%;
+} 
+
+
+
+
+
+.profile{
   display: flex;
+  padding: 0% 14%;
 }
 
-.portfolio-cover {
+.profileRight{
+  flex: 9;
+}
+
+.profileCover{
+  height: 320px;
   position: relative;
 }
 
-.portfolio-cover-photo {
+.profileCoverImg{
   width: 100%;
-  height: auto;
+  height: 520px;
+  object-fit: cover;
 }
 
-.change-cover-button {
+.profileUserImg{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 1px;
-  width: 190px;
+  left: 0;
+  right: 90%;
+  margin: auto;
+  top: 165%;
+ 
 }
+
+/* .profileInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileInfoName{
+  font-size: 24px;
+  margin-top: 200px;
+}
+
+.profileInfoDesc{
+  font-weight: 300;
+}
+
+.profileRightBottom{
+  display: flex;
+} */
