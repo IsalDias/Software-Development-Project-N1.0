@@ -4,8 +4,8 @@ const {Service} = require ('../models');
 
 
 router.get('/',async (req, res) => {
-    const infoOfServicesID = await Service.findAll();
-    res.json(infoOfServicesID);
+    const infoOfServicesDetails = await Service.findAll();
+    res.json(infoOfServicesDetails);
 });
 
 

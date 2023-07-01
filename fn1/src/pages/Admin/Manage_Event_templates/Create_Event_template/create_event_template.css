@@ -18,28 +18,6 @@ color: #FFFFFF;
   }
   
 
-  .custom-alert {
-    background-color: #000000;
-  }
-  
-  .custom-alert .swal-title {
-    color: #ffffff;
-  }
-  
-  .custom-alert .swal-button {
-    background-color: #5e0000;
-    border: transparent; /* Make the border transparent */
-  }
-  
-  .custom-alert .swal-icon {
-    background-color: transparent;
-  }
-  
-  .custom-alert .swal-button:hover {
-    background-color: #700000;
-    border: transparent; /* Make the border transparent on hover */
-  }
-
   
   .custom-dropdown-menu{
     color: #c00000;

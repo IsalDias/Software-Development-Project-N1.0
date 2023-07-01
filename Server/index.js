@@ -32,6 +32,11 @@ app.use("/pstevnttmpltservices", ServicesNames)
 
 
 
+const ServiceDetails = require('./Routes/Admin_GetserviceID');
+app.use("/secervisdetails", ServiceDetails)
+
+
+
 
 
 

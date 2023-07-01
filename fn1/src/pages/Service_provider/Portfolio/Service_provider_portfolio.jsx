@@ -1,183 +1,121 @@
-import React from 'react';
-import './serviceProviderProfile.css'; // Import the CSS file for styling
-import { Button, Col, Container, Row,Image } from 'react-bootstrap';
-import { Formik, Field, Form } from "formik";
-import portfolioCover from './portfolioCover.png';
-import profilePicture from '../Portfolio/profilePicture.jpeg';
-
-
-const ServiceProviderProfile = () => {
-  return (
-    <div style={{ width:'100%',height:"auto", marginTop:"5%",display:"flex"}}>
-
-<div className="profile">
-
-<div className="profileRight">
-  <div className="profileRightTop">
-    <div className="profileCover">
-      <Container>
-      <Row>
-      <img
-        className="profileCoverImg"
-        src={portfolioCover}
-        alt=""
-      />
-      </Row>
-      </Container>
-
-      <Container>
-      <Row >
-        <Col xs={6} lg={3}>
-      <img
-        className="profileUserImg"
-        src={profilePicture}
-        alt=""
-      />
-      </Col>
-
-      <Col xs={6} lg={9} style={{padding:"0%"}}>
-      
-      <h4 className='portfolio_heading' >Imagine Entertainment</h4>
-      </Col>
-      </Row>
-      </Container>
-    </div>
-
-    <div>
-    <Container>
-      <Row style={{position:"relative" ,top:"450px",padding:"0% 5%" }}>
-      <Col xs={12} lg={3}> contact number: </Col>
-      <Col xs={12} lg={3}> E-mail  </Col>
-      <Col xs={12} lg={3}> Address </Col>
-      <Col xs={12} lg={3}> web </Col>
-      </Row>
-    </Container>
-    </div>
-    <div className='description'>
-    <Formik>
-    <Form>
-    <Field
-                name="portfolioDescription"
-                type="text"
-                placeholder="Description"
-                className="custom"
-              />
-    </Form>
-  </Formik>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* <div className= "portfolio_Cover" >
-      <Row>
-
-      <img src={portfolioCover} className='Portfolio_CoverPhoto' alt='Cover Photo' />
-
-      <br></br>
-      <br></br>
-      <Button style={{padding:"1px", width:"190px", marginTop:"30px"}}> Change Cover Photo </Button>
-    </Row>
-<br></br>
-
-<Row>
-        <Col xs={4} lg={4} className="d-flex justify-content-left">
-          <Image src={profilePicture} roundedCircle  />
-
-        </Col>
-
-
-
-  <Col xs={4} lg={4} > 
-  
-  <h1 className='portfolio_heading' >  Imagine Entertainment </h1>
-  
-   </Col>
-  <Col xs={4} lg={4} style={{padding:'5%' }}> <Button style={{backgroundColor:"green", borderColor:"transparent", width:"40%"}}> Whatsapp </Button> </Col>
-</Row>
-
-
-
-<Row>
-  <Col xs={12} lg={3}> contact number: </Col>
-  <Col xs={12} lg={3}> E-mail </Col>
-  <Col xs={12} lg={3}> Address</Col>
-  <Col xs={12} lg={3}> web</Col>
-</Row>
-
-
-<Row>
-  <Formik>
-    <Form>
-    <Field
-                name="portfolioDescription"
-                type="text"
-                placeholder="Description"
-                className="custom"
-              />
-    </Form>
-  </Formik>
-</Row>
-
-<Row>
-  packages component
-</Row>
-
-<Row>
-<Col xs={12} lg={4}> back</Col>
-  <Col xs={12} lg={4}> Book Now </Col>
-  <Col xs={12} lg={4}> Make an Appointment</Col>
-</Row>
-
-
-
-      </div> */}
-
-
-
-
-
-    </div>
-  );
-};
-
-export default ServiceProviderProfile;
+// import React from "react";
+// // import './serviceProviderProfileNew.css';
+// import portfolioCover from "./portfolioCover.png";
+// // import Coverphoto from '../Portfolio/Cover_photo/Coverphoto';
+// import profilePicture from "./profilePicture.jpeg";
+// // import pen from "./pen.svg";
+
+// const Service_provider_portfolio_new = () => {
+//   return (
+//     //     <div
+//     //       className="container mx-0 mb-0"
+//     //       style={{ height: "auto", width: "100vw", marginTop: "89px" }}
+//     //     >
+//     //       <div className="cover-row row m-0">
+//     //         {/* <div
+//     //           className="portfolio-cover position-relative col-12 m-0 p-0"
+//     //           style={{
+//     //             height: "40vw",
+//     //             width: "100%",
+//     //             backgroundImage: `url(${portfolioCover})`,
+//     //             backgroundRepeat: "no-repeat",
+//     //             backgroundSize: "contain",
+//     //           }}
+//     //         >
+//     //           <button
+//     //             type="button"
+//     //             className="edit-cover-btn btn btn-secondary position-absolute me-2 mt-2 opacity-50 top-0 end-0"
+//     //           >
+//     //             Edit Cover
+//     //           </button>
+//     //         </div> */}
+//     //         <div style={{ border: "1px solid" }}>
+//     //           <img
+//     //             className="profile-img img-fluid p-0 m-0"
+//     //             src={portfolioCover}
+//     //             alt="portfolioCover"
+//     //             style={{ height: "100%" }}
+//     //           />
+//     //         </div>
+//     //       </div>
+
+//     //       <div className="profile-details row m-0 p-0" style={{ height: "15vw" }}>
+//     //         <div
+//     //           className="profile-picture col-3 p-0 m-0 text-center position-relative"
+//     //           style={{ height: "100%" }}
+//     //         >
+//     //           <img
+//     //             className="profile-img img-fluid rounded-circle p-0 m-0"
+//     //             src={profilePicture}
+//     //             alt="Profile Picture"
+//     //             style={{ height: "100%" }}
+//     //           />
+//     //           <button
+//     //             type="button"
+//     //             className="edit-profile-btn btn btn-secondary position-absolute me-5 mt-2 opacity-50 bottom-0 end-0"
+//     //           >
+//     //             <img src={pen} alt="" />
+//     //           </button>
+//     //         </div>
+
+//     //         <div className="profile-details d-flex flex-column col-9 p-0 m-0 justify-content-center">
+//     //           <h1 className="display-5">Flexus Labs</h1>
+//     //           <div
+//     //             className="rounded-pill m-0 p-0 px-3 bg-light text-muted"
+//     //             style={{ width: "fit-content" }}
+//     //           >
+//     //             <strong>photography</strong>
+//     //           </div>
+
+//     //           <div className="details-row row my-4">
+//     //             <div className="contact col-3">Contact</div>
+//     //             <div className="email col-3">E-mail</div>
+//     //             <div className="address col-3">Address</div>
+//     //             <div className="web col-3">Web</div>
+//     //           </div>
+//     //         </div>
+
+//     //         <div className="description col-11 p-5 rounded my-5 mx-auto text-light bg-secondary">
+//     //           Description
+//     //         </div>
+
+//     //         <div>
+//     //           {/* <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+//     //             {itemData.map((item) => (
+//     //             <ImageListItem key={item.img}>
+//     //               <img
+//     //             src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+//     //            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+//     //             alt={item.title}
+//     //              loading="lazy"
+//     //             />
+//     //     </ImageListItem>
+//     //   ))}
+//     // </ImageList> */}
+//     //         </div>
+
+//     //         <div>
+//     //           {/* <Row>
+//     //                 <Col xs={6} lg={4}>
+
+//     //                 </Col>
+
+//     //                 <Col xs={6} lg={4}>
+
+//     //                 </Col>
+//     //               </Row> */}
+//     //         </div>
+//     //       </div>
+//     //     </div>
+//     <div>
+//       <div style={{ border: "1px solid", marginTop: "5%" ,width}}>
+//         <img src={portfolioCover} width='100%' />
+//       </div>
+//       <div>
+//         <img src={profilePicture}/>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Service_provider_portfolio_new;

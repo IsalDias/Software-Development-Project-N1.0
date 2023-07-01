@@ -9,11 +9,16 @@ router.get('/',async (req, res) => {
 });
 
 
-router.post('/',async(req, res) => {
-    const crt_evnt = req.body;
-    console.log(crt_evnt);
-    await ServiceEventTemplate.create(crt_evnt);
-    res.json(crt_evnt);
-});
-
+router.post('/evnttmpltservices', async (req, res) => {
+    try {
+      const serviceEventTemplates = req.body;
+      console.log(serviceEventTemplates);
+      await ServiceEventTemplate.bulkCreate(serviceEventTemplates);
+      res.json(serviceEventTemplates);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: 'An error occurred while creating service event templates' });
+    }
+  });
+  
 module.exports = router;

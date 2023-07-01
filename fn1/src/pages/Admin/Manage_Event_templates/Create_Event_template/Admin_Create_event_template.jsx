@@ -7,27 +7,42 @@ import axios from "axios";
 const Create_event_template = () => {
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
-  const [selectedService, setSelectedService] = useState(""); // Changed variable name
+  const [selectedService, setSelectedService] = useState("");
   const [selectedServices, setSelectedServices] = useState([]);
   const [alreadySelected, setAlreadySelected] = useState([]);
   const [filteredServiceNames, setFilteredServiceNames] = useState([]);
+  const [eventTemplateId, setEventTemplateId] = useState("");
+  const [value3, setValue3] = useState(1);
 
   useEffect(() => {
     // Fetch service names from the backend API
-    axios.get("http://localhost:3001/gtservicenames")
+    axios
+      .get("http://localhost:3001/secervisdetails")
       .then((response) => {
-        setFilteredServiceNames(response.data);
+        const serviceNames = response.data;
+        setFilteredServiceNames(serviceNames);
       })
       .catch((error) => {
         console.log(error);
       });
+
+    // Fetch the last event template ID from the backend API
+  //   axios
+  //     .get("http://localhost:3001/evnttmplt/lastId")
+  //     .then((response) => {
+  //       const lastId = parseInt(response.data.lastId);
+  //       setEventTemplateId(lastId + 1);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
   }, []);
 
-  const handleServiceSelect = (service) => { // Changed function name
+  const handleServiceSelect = (service) => {
     setSelectedService(service);
   };
 
-  const handleServiceSubmit = () => { // Changed function name
+  const handleServiceSubmit = () => {
     if (!selectedService) {
       swal({
         title: "Please select a service!",
@@ -65,11 +80,146 @@ const Create_event_template = () => {
     setAlreadySelected(updatedAlreadySelected);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check if event template name is filled
+    if (!value1) {
+      swal({
+        title: "Please enter an event template name!",
+        icon: "warning",
+        buttons: "OK",
+        className: "custom-alert",
+      });
+      return;
+    }
+
+    try {
+      // Check if event template name already exists in the database
+      const response = await axios.get(
+        "http://localhost:3001/evnttmplt/gtinfoevnttmplt"
+      );
+
+      const existingTemplates = response.data;
+
+      if (
+        existingTemplates.find(
+          (template) => template.eventTemplateName === value1
+        )
+      ) {
+        swal({
+          title: "Event template name already exists!",
+          icon: "warning",
+          buttons: "OK",
+          className: "custom-alert",
+        });
+        return;
+      }
+
+      const eventData = {
+        eventTemplateName: value1,
+        eventTemplateDescrpt: value2,
+      };
+
+      // Create the event template
+      axios
+        .post("http://localhost:3001/evnttmplt/snd_data", eventData)
+        .then((response) => {
+
+          axios
+          .get("http://localhost:3001/evnttmplt/lastId")
+          .then((response) => {
+            const lastId = parseInt(response.data.eventTemplateid);
+            const lastid = lastId + 1;
+            setValue3(lastid);
+            console.log(value3);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        
+
+
+          // Get the newly created event template ID
+      
+          // Create the records in the serviceeventtemplates table
+          const serviceEventTemplateData = selectedServices.map((service) => ({
+            eventTemplateid: value3,
+            serviceId: service,
+          }));
+ console.log(selectedServices);
+ console.log(serviceEventTemplateData);
+          axios
+            .post(
+              "http://localhost:3001/pstevnttmpltservices/evnttmpltservices",
+              serviceEventTemplateData
+            )
+            .then((response) => {
+              handleReset();
+              // Handle successful submission
+              // For example, show a success message
+              swal({
+                title: "Event template created successfully!",
+                text: "successfully created",
+                icon: "success",
+                buttons: "OK",
+                className: "custom-alert",
+              });
+            })
+            .catch((error) => {
+              // Handle error
+              // For example, show an error message
+              swal({
+                title: "Error creating event template!",
+                text:
+                  "An error occurred while creating the event template. Please try again.",
+                icon: "error",
+                buttons: "OK",
+                className: "custom-alert",
+              });
+            });
+        })
+        .catch((error) => {
+          // Handle error
+          // For example, show an error message
+          swal({
+            title: "Error creating eventrghrrjryj template!",
+            text:
+              "An error occurred while creating the event template. Please try again.",
+            icon: "error",
+            buttons: "OK",
+            className: "custom-alert",
+          });
+        });
+    } catch (error) {
+      // Handle error
+      // For example, show an error message
+      swal({
+        title: "Error checking event template name!",
+        text:
+          "An error occurred while checking the event template name. Please try again.",
+        icon: "error",
+        buttons: "OK",
+        className: "custom-alert",
+      });
+    }
+  }
+
+  const handleReset = () => {
+    setValue1("");
+    setValue2("");
+    setSelectedService("");
+    setSelectedServices([]);
+    setAlreadySelected([]);
+    setEventTemplateId("");
+    setValue3(1);
+  };
+
   return (
     <div style={{ margin: "8% 8% 0% 3%", padding: "0% 8%" }}>
       <h1 className="create_event_template_heading">Add Event Template</h1>
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Row>
           <Col>
             <Form.Group controlId="EventTemplate">
@@ -109,12 +259,16 @@ const Create_event_template = () => {
                     {selectedService || "Select a service"}
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="custom-dropdown-menu">
-                    {filteredServiceNames.map((name) => (
+                    {filteredServiceNames.map((service) => (
                       <Dropdown.Item
-                        key={name.serviceName}
-                        onClick={() => handleServiceSelect(name.serviceName)}
+                        key={service.serviceId}
+                        //onChange={setSelectedServicesname(service.serviceName)}
+                        onClick={() =>
+                          handleServiceSelect(service.serviceId)
+                        
+                        }
                       >
-                        {name.serviceName}
+                         {service.serviceName} 
                       </Dropdown.Item>
                     ))}
                   </Dropdown.Menu>
@@ -136,29 +290,40 @@ const Create_event_template = () => {
           <br />
 
           <div className="selected-services">
-            <h4>Selected Services:</h4>
-            <br />
+  <h4>Selected Services:</h4>
+  <br />
 
-            {selectedServices.map((service) => (
-              <div key={service} className="service-item">
-                <Row>
-                  <Col xs={6} lg={6}>
-                    <span>{service}</span>
-                  </Col>
+  {selectedServices.map((serviceId) => {
+    const service = filteredServiceNames.find(
+      (service) => service.serviceId === serviceId
+    );
 
-                  <Col xs={6} lg={6}>
-                    <Button
-                      variant="outline-danger"
-                      onClick={() => handleDropService(service)}
-                    >
-                      Drop
-                    </Button>
-                  </Col>
-                </Row>
-                <hr />
-              </div>
-            ))}
-          </div>
+    if (!service) {
+      return null;
+    }
+
+    return (
+      <div key={service.serviceId} className="service-item">
+        <Row>
+          <Col xs={6} lg={6}>
+            <span>{service.serviceName}</span>
+          </Col>
+
+          <Col xs={6} lg={6}>
+            <Button
+              variant="outline-danger"
+              onClick={() => handleDropService(service.serviceId)}
+            >
+              Drop
+            </Button>
+          </Col>
+        </Row>
+        <hr />
+      </div>
+    );
+  })}
+</div>
+
         </div>
 
         <Button type="submit">Submit</Button>
